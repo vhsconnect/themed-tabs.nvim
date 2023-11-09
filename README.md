@@ -39,4 +39,7 @@ The default `colorscheme` set in your configuration will take precedent over the
 ## Development
 
 Append the path to the plugin's `init.lua` to your `package.path`
+
+```lua
 `package.path = package.path .. ';/path/to/themed-tabs.nvim/lua/themed-tabs/init.lua'`
+```
