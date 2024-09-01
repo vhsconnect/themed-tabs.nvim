@@ -7,8 +7,8 @@ This plugin only works in _Neovim 0.5_ or newer - This will not work in any vers
 Using [packer](https://github.com/wbthomason/packer.nvim) in lua
 
 ```lua
-use {"vhsconnect/themed-tabs.nvim", tag = '*', config = function()
-  require("toggleterm").setup({ colorschemes = { "theme1", "theme2", "etc" }})
+use {"vhsconnect/themed-tabs.nvim", config = function()
+  require("themed-tabs").setup({ colorschemes = { "theme1", "theme2", "etc" }})
 end}
 ```
 
@@ -16,17 +16,24 @@ Using [lazy.nvim](https://github.com/folke/lazy.nvim) in lua
 
 ```lua
 {
-  {'vhsconnect/themed-tabs.nvim', version = "*", opts = { colorschemes = { "theme1", "theme2", "etc" }}}
+  {'vhsconnect/themed-tabs.nvim', opts = { colorschemes = { "theme1", "theme2", "etc" }}}
 }
 ```
 
+Using lua
+
+```lua
+  require('themed-tabs').setup({ colorschemes = { "theme1", "theme2", "etc" }) 
+```
+
+
 ## Motivation
 
-I found myself getting lost in the sauce when I was working on many files at once or when I was exploring large projects. By color coding each tab I can switch contexts that little bit faster and keep focus.
+I found myself getting lost and disorganized when I was working with many tabs at once especially when each tab is further broken down into a set of panes. By color coding each tab I can switch contexts that little bit faster and keep focus.
 
 ## Setup
 
-This plugin must be explicitly enabled and a list of `colorschemes` must be passed in the configuration by using `require("toggleterm").setup{ colorschemes }`. Neovim will throw errors when you switch tabs if these are not set.
+This plugin must be explicitly enabled and a list of `colorschemes` must be passed in the configuration by using `require("themed-tabs").setup{ colorschemes }`. Neovim will throw errors when you switch tabs if these are not set.
 
 ## Usage
 
