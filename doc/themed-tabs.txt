@@ -1,4 +1,4 @@
-*themed-tabs.txt*       For Neovim >= 0.5.0      Last change: 2023 November 09
+*themed-tabs.txt*      For Neovim >= 0.5.0      Last change: 2024 September 01
 
 ==============================================================================
 Table of Contents                              *themed-tabs-table-of-contents*
@@ -22,8 +22,8 @@ INSTALLATION                                        *themed-tabs-installation*
 Using packer <https://github.com/wbthomason/packer.nvim> in lua
 
 >lua
-    use {"vhsconnect/themed-tabs.nvim", tag = '*', config = function()
-      require("toggleterm").setup({ colorschemes = { "theme1", "theme2", "etc" }})
+    use {"vhsconnect/themed-tabs.nvim", config = function()
+      require("themed-tabs").setup({ colorschemes = { "theme1", "theme2", "etc" }})
     end}
 <
 
@@ -31,23 +31,31 @@ Using lazy.nvim <https://github.com/folke/lazy.nvim> in lua
 
 >lua
     {
-      {'vhsconnect/themed-tabs.nvim', version = "*", opts = { colorschemes = { "theme1", "theme2", "etc" }}}
+      {'vhsconnect/themed-tabs.nvim', opts = { colorschemes = { "theme1", "theme2", "etc" }}}
     }
+<
+
+Using lua
+
+>lua
+      require('themed-tabs').setup({ colorschemes = { "theme1", "theme2", "etc" }) 
 <
 
 
 MOTIVATION                                            *themed-tabs-motivation*
 
-I found myself getting lost in the sauce when I was working on many files at
-once or when I was exploring large projects. By color coding each tab I can
-switch contexts that little bit faster and keep focus.
+I found myself getting lost and disorganized when I was working with many tabs
+at once especially when each tab is further broken down into a set of panes. By
+color coding each tab I can switch contexts that little bit faster and keep
+focus.
 
 
 SETUP                                                      *themed-tabs-setup*
 
 This plugin must be explicitly enabled and a list of `colorschemes` must be
-passed in the configuration by using `require("toggleterm").setup{ colorschemes
-}`. Neovim will throw errors when you switch tabs if these are not set.
+passed in the configuration by using `require("themed-tabs").setup{
+colorschemes }`. Neovim will throw errors when you switch tabs if these are not
+set.
 
 
 USAGE                                                      *themed-tabs-usage*
