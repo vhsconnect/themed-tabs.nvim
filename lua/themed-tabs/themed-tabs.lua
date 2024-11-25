@@ -21,7 +21,7 @@ function Plugin()
 				return color
 			end
 		end
-		return "blue"
+		return config.config.fallback_colorscheme
 	end
 
 	local function on_enter()

@@ -1,7 +1,18 @@
 local M = {}
 
 M.config = {
-	colorschemes = { "blue" },
+	colorschemes = {
+		"desert",
+		"evening",
+		"industry",
+		"murphy",
+		"blue",
+		"pablo",
+		"ron",
+		"shine",
+		"torte",
+	},
+	fallback_colorscheme = "default",
 }
 
 function M.setup(user_config)
