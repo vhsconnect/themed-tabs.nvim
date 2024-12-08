@@ -1,3 +1,9 @@
+## Motivation
+
+I found myself getting lost and disorganized when I was working with many tabs at once especially when each tab is further broken down into a set of panes. By color coding each tab I can switch contexts that little bit faster and keep focus.
+
+`themed-tabs` automatically assigns new tabs to preselected themes of your choosing. You can also change the colors of the various tabs during usage and it will persist them.
+
 ## Requirements
 
 This plugin only works in _Neovim 0.5_ or newer - This will not work in any version of _Vim_
@@ -23,25 +29,26 @@ Using [lazy.nvim](https://github.com/folke/lazy.nvim) in lua
 Using lua
 
 ```lua
-  require('themed-tabs').setup({ colorschemes = { "theme1", "theme2", "etc" }) 
+  require('themed-tabs').setup({ colorschemes = { "theme1", "theme2", "etc" }}) 
+```
+
+## Configuration
+```lua
+  local config = { 
+    colorschemes = { "theme1", "theme2", "etc" },
+    fallback_colorscheme = "theme3"
+  }
 ```
 
 
-## Motivation
-
-I found myself getting lost and disorganized when I was working with many tabs at once especially when each tab is further broken down into a set of panes. By color coding each tab I can switch contexts that little bit faster and keep focus.
 
 ## Setup
 
-This plugin must be explicitly enabled and a list of `colorschemes` must be passed in the configuration by using `require("themed-tabs").setup{ colorschemes }`. Neovim will throw errors when you switch tabs if these are not set.
-
-## Usage
-
-Just create new tabs and switch between them as you usually would. The theme is set per tab number so closing a tab will cause all your tabs to shift one colorscheme to the left.
+This plugin must be explicitly enabled and a list of `colorschemes` must be passed in the configuration by using `require("themed-tabs").setup{ colorschemes }`. `themed-tabs` falls back on some default themes in case those are not set.
 
 ## Caveats and limitations
 
-The default `colorscheme` set in your configuration will take precedent over the first colorscheme in the plugin's configuration when opening Neovim. Once you cycle back to the first tab however the plugin's first theme is applied. That's why it's a good idea to match those two themes.
+Colorschemes do not cycle back to the begninning. Once all colorschemes are used, themed-tabs falls back on the `fallback-colorscheme`
 
 ## Development
 
