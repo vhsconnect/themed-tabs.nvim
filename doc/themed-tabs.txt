@@ -1,15 +1,27 @@
-*themed-tabs.txt*      For Neovim >= 0.5.0      Last change: 2024 September 01
+*themed-tabs.txt*       For Neovim >= 0.5.0      Last change: 2024 December 08
 
 ==============================================================================
 Table of Contents                              *themed-tabs-table-of-contents*
 
+  - Motivation                                        |themed-tabs-motivation|
   - Requirements                                    |themed-tabs-requirements|
   - Installation                                    |themed-tabs-installation|
-  - Motivation                                        |themed-tabs-motivation|
+  - Configuration                                  |themed-tabs-configuration|
   - Setup                                                  |themed-tabs-setup|
-  - Usage                                                  |themed-tabs-usage|
   - Caveats and limitations              |themed-tabs-caveats-and-limitations|
   - Development                                      |themed-tabs-development|
+
+MOTIVATION                                            *themed-tabs-motivation*
+
+I found myself getting lost and disorganized when I was working with many tabs
+at once especially when each tab is further broken down into a set of panes. By
+color coding each tab I can switch contexts that little bit faster and keep
+focus.
+
+`themed-tabs` automatically assigns new tabs to preselected themes of your
+choosing. You can also change the colors of the various tabs during usage and
+it will persist them.
+
 
 REQUIREMENTS                                        *themed-tabs-requirements*
 
@@ -38,39 +50,32 @@ Using lazy.nvim <https://github.com/folke/lazy.nvim> in lua
 Using lua
 
 >lua
-      require('themed-tabs').setup({ colorschemes = { "theme1", "theme2", "etc" }) 
+      require('themed-tabs').setup({ colorschemes = { "theme1", "theme2", "etc" }}) 
 <
 
 
-MOTIVATION                                            *themed-tabs-motivation*
+CONFIGURATION                                      *themed-tabs-configuration*
 
-I found myself getting lost and disorganized when I was working with many tabs
-at once especially when each tab is further broken down into a set of panes. By
-color coding each tab I can switch contexts that little bit faster and keep
-focus.
+>lua
+      local config = { 
+        colorschemes = { "theme1", "theme2", "etc" },
+        fallback_colorscheme = "theme3"
+      }
+<
 
 
 SETUP                                                      *themed-tabs-setup*
 
 This plugin must be explicitly enabled and a list of `colorschemes` must be
 passed in the configuration by using `require("themed-tabs").setup{
-colorschemes }`. Neovim will throw errors when you switch tabs if these are not
-set.
-
-
-USAGE                                                      *themed-tabs-usage*
-
-Just create new tabs and switch between them as you usually would. The theme is
-set per tab number so closing a tab will cause all your tabs to shift one
-colorscheme to the left.
+colorschemes }`. `themed-tabs` falls back on some default themes in case those
+are not set.
 
 
 CAVEATS AND LIMITATIONS                  *themed-tabs-caveats-and-limitations*
 
-The default `colorscheme` set in your configuration will take precedent over
-the first colorscheme in the plugin’s configuration when opening Neovim. Once
-you cycle back to the first tab however the plugin’s first theme is applied.
-That’s why it’s a good idea to match those two themes.
+Colorschemes do not cycle back to the begninning. Once all colorschemes are
+used, themed-tabs falls back on the `fallback-colorscheme`
 
 
 DEVELOPMENT                                          *themed-tabs-development*
